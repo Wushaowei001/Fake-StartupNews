@@ -3,6 +3,7 @@ Snews::Application.routes.draw do
   root to: 'static_pages#home'
 
   match '/about', to: 'static_pages#about'
+  match 'posts/:id', to: 'static_pages#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

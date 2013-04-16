@@ -1,3 +1,20 @@
 <% provide(:title, 'Home') %>
-<h1>Starup News</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="span3">
+  <ul class="nav nav-list">
+    <% @posts.each do |post| %>
+    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="span8">
+</div>
+
+<script type="text/javascript">
+  $("a.post-title").click(function() {
+    var post_id = $(this).attr("id");
+    $.get("/posts/" + post_id, function(result) {
+      $('.span8').html(result);
+    });
+  });
+</script>
