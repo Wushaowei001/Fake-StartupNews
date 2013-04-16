@@ -15,15 +15,13 @@
   </head>
   <body>
     <%= render 'layouts/shim' %>
-    <div class="container">
       <%= render 'layouts/header' %>
 
-      <div class="container-fluid">
-        <div class="row-fluid">
+      <div class="container">
+        <div class="row">
           <%= yield %>
         </div>
       </div>
 
-    </div>
   </body>
 </html>

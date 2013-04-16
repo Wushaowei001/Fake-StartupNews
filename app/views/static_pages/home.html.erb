@@ -3,18 +3,27 @@
   <ul class="nav nav-list">
     <% @posts.each do |post| %>
     <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
+    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
+    <!-- <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
+    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
+    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li> -->
     <% end %>
+    <li class="prev"></li>
+    <li class="next"></li>
   </ul>
 </div>
 
-<div class="span8">
+<div class="span9" id="post-content">
+  <div class="page-inner">
+    <%= @post.content.html_safe %>
+  </div>
 </div>
 
 <script type="text/javascript">
   $("a.post-title").click(function() {
     var post_id = $(this).attr("id");
     $.get("/posts/" + post_id, function(result) {
-      $('.span8').html(result);
+      $('.page-inner').html(result);
     });
   });
 </script>
