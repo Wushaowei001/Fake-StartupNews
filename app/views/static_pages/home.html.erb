@@ -1,15 +1,10 @@
 <% provide(:title, 'Home') %>
 <div class="span3">
-  <ul class="nav nav-list">
-    <% @posts.each do |post| %>
-    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
-    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
-    <!-- <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
-    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
-    <li><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li> -->
+  <ul class="nav nav-list" id="post-list">
+    <% @posts.each_with_index do |post, index| %>
+    <li class="<%= index/5 %>"><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
     <% end %>
-    <li class="prev"></li>
-    <li class="next"></li>
+    <li id="next"><a href="" class="next" onClick="return false;">Next</a></li>
   </ul>
 </div>
 
@@ -25,5 +20,23 @@
     $.get("/posts/" + post_id, function(result) {
       $('.page-inner').html(result);
     });
+  });
+  $("ul#post-list > li:gt(4):not(#next)").css('display', 'none');
+  $("a.next").click(function() {
+    if ($(this).text() == 'Next') {
+      var show_id = parseInt($("ul#post-list > li:visible").attr("class")) + 1;
+      $("ul#post-list > li:visible:not(#next)").hide();
+      $("li." + show_id).show();
+      if (show_id == 4) {
+        $(this).text('Prev');
+      };
+    }else if ($(this).text() == 'Prev') {
+      var show_id = parseInt($("ul#post-list > li:visible").attr("class")) - 1;
+      $("ul#post-list > li:visible:not(#next)").hide();
+      $("li." + show_id).show();
+      if (show_id == 0) {
+        $(this).text('Next');
+      };
+    };
   });
 </script>

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Less here: http://lesscss.org/
 body {
-  background: #f6f7f1 url(wall.png) repeat 0 0;
+  background-color: #B5CAA0;
 }
 .navbar .brand {
   margin-left: 0px;
@@ -23,10 +23,11 @@ body {
     padding: 40px;
   }
 }
-.post-title {
+.nav-list li a.post-title, .nav-list li a.next {
   margin-top: 10px;
+  padding: 4px 15px;
   border: none;
-  background: #7F8C8D;
+  background: #91AD70;
   color: white;
   font-size: 14.5px;
   text-decoration: none;
@@ -40,7 +41,16 @@ body {
   transition: 0.25s;
   -webkit-backface-visibility: hidden;
 }
-.post-title:hover {
-  background: #95A5A6;
-  color: #34495E;
+.nav-list li a.post-title:hover {
+  background: #20604F;
+}
+.nav-list li a.next {
+  width: 24px;
+  float: right;
+  background: #69B0AC;
+  font-size: 16.5px;
+}
+.nav-list li a.next:hover {
+  width: 34px;
+  background: #3A8FB7;
 }
