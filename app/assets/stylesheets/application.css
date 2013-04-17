@@ -12,3 +12,61 @@
  *= require_self
  *= require_tree .
  */
+body {
+  background-color: #B5CAA0;
+  overflow-y: scroll;
+}
+.navbar .brand {
+  margin-left: 0;
+}
+#post-content {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border-color: #ccc;
+  border: 1px solid #dbdfd6;
+  margin: 0 auto;
+  min-height: 600px;
+  opacity: 1;
+  position: relative;
+}
+#post-content .page-inner {
+  padding: 40px;
+}
+#post-list {
+  position: fixed;
+  width: 200px;
+}
+.nav-list li a.post-title,
+.nav-list li a.next {
+  margin-top: 10px;
+  padding: 4px 15px;
+  border: none;
+  background: #91AD70;
+  color: white;
+  font-size: 14.5px;
+  text-decoration: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+}
+.nav-list li a.post-title:hover {
+  background: #20604F;
+}
+.nav-list li a.next {
+  width: 32px;
+  float: right;
+  background: #69B0AC;
+  font-size: 16.5px;
+}
+.nav-list li a.next:hover {
+  width: 42px;
+  background: #3A8FB7;
+}
