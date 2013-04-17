@@ -25,7 +25,7 @@ namespace :fetch do
     response = Net::HTTP.get_response("7h2oappengine.sinaapp.com","/snapi/news.php")
     result = JSON.parse(response.body)
     Post.destroy_all
-    result[0..5].each do |post|
+    result[0..29].each do |post|
       content = fetch_content(post['link'])
       Post.create(:title => post['title'] ,:url => post['link'], :content => content, :points => post['points'])
     end
