@@ -22,13 +22,23 @@ namespace :fetch do
       JSON.parse(response.body)['content']
     end
 
+    puts "Fetch articles' urls..."
     response = Net::HTTP.get_response("7h2oappengine.sinaapp.com","/snapi/news.php")
     result = JSON.parse(response.body)
     Post.destroy_all
+    puts "Fetch articles..."
     result[0..29].each do |post|
       content = fetch_content(post['link'])
       Post.create(:title => post['title'] ,:url => post['link'], :content => content, :points => post['points'])
     end
-
+    puts "Finsh."
   end
+
+  desc "This task is called by the Heroku cron add-on"
+  task :cron => :environment do
+    if Time.now.hour % 4 == 0 # run every four hours
+      puts "Cron..."
+      Rake::Task["fetch:posts"].invoke
+      puts "done."
+    end
 end
