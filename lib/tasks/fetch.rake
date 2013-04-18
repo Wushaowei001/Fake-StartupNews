@@ -41,4 +41,5 @@ namespace :fetch do
       Rake::Task["fetch:posts"].invoke
       puts "done."
     end
+  end
 end
