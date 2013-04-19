@@ -21,7 +21,7 @@
   $("a.post-title").click(function() {
     $('.post-content *').remove();
     var spinner = new Spinner({top: '50px'}).spin();
-    $('.page-inner').append(spinner.el);
+    $('.post-content').append(spinner.el);
     var post_id = $(this).attr("id");
     $.get("/posts/" + post_id, function(result) {
       $('.post-content').html(result);
