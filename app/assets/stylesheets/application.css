@@ -12,6 +12,10 @@
  *= require_self
  *= require_tree .
  */
+body, button, input, select, textarea {
+  font-family:Verdana,Arial,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+}
+
 body {
   background-color: #B5CAA0;
   overflow-y: scroll;
@@ -102,9 +106,11 @@ body {
 }
 .nav-list li a.next {
   width: 32px;
-  float: right;
   background: #69B0AC;
   font-size: 16.5px;
+  top: 340px;
+  position: absolute;
+  right: 14px;
 }
 .nav-list li a.next:hover {
   width: 42px;
