@@ -13,7 +13,7 @@ end
 group :assets do
   gem 'therubyracer'  # If using Ruby
   gem 'less-rails-bootstrap'
-  gem 'coffee-rails', '3.2.2'
+  # gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
 end
 
