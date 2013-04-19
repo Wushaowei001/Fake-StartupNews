@@ -19,7 +19,7 @@ body {
 .navbar .brand {
   margin-left: 0;
 }
-#post-content {
+.post-content {
   background-color: #fff;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -31,10 +31,33 @@ body {
   opacity: 1;
   position: relative;
 }
-#post-content .page-inner {
+.post-content .page-inner {
   padding: 40px;
 }
-#post-list {
+.page-header {
+  padding: 0;
+  margin: 0;
+}
+.page-header a {
+  display: block;
+  padding: 0 30px;
+  font-size: 20px;
+  line-height: 50px;
+  background-color: #f7f8f6;
+}
+.page-header a:hover {
+  text-decoration: none;
+}
+.page-header span {
+  font-size: 9px;
+  color: #777;
+  float: right;
+}
+.page-header span .icon-heart {
+  opacity: .5;
+  margin: 0 2px;
+}
+.post-list {
   position: fixed;
   width: 200px;
 }
@@ -72,4 +95,5 @@ body {
 }
 .spinner {
   margin:0 auto;
+  top: 100px;
 }

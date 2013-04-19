@@ -1,6 +1,6 @@
 <% provide(:title, 'Home') %>
 <div class="span3">
-  <ul class="nav nav-list" id="post-list">
+  <ul class="nav nav-list post-list">
     <% @posts.each_with_index do |post, index| %>
     <li class="<%= index/5 %>"><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
     <% end %>
@@ -8,7 +8,10 @@
   </ul>
 </div>
 
-<div class="span9" id="post-content">
+<div class="span9 post-content">
+  <div class="page-header">
+    <a href="<%= @post.url %>" title="查看原文" target="_blank"><%= @post.title %><span><i class="icon-heart"></i><%= @post.points %></span></a>
+  </div>
   <div class="page-inner">
     <%= @post.content.html_safe %>
   </div>
@@ -16,26 +19,26 @@
 
 <script>
   $("a.post-title").click(function() {
-    $('.page-inner *').remove();
+    $('.post-content *').remove();
     var spinner = new Spinner({top: '50px'}).spin();
     $('.page-inner').append(spinner.el);
     var post_id = $(this).attr("id");
     $.get("/posts/" + post_id, function(result) {
-      $('.page-inner').html(result);
+      $('.post-content').html(result);
     });
   });
-  $("ul#post-list > li:gt(4):not(#next)").css('display', 'none');
+  $("ul.post-list > li:gt(4):not(#next)").css('display', 'none');
   $("a.next").click(function() {
     if ($(this).text() == 'Next') {
-      var show_id = parseInt($("ul#post-list > li:visible").attr("class")) + 1;
-      $("ul#post-list > li:visible:not(#next)").hide();
+      var show_id = parseInt($("ul.post-list > li:visible").attr("class")) + 1;
+      $("ul.post-list > li:visible:not(#next)").hide();
       $("li." + show_id).fadeIn('slow');
       if (show_id == 4) {
         $(this).text('Prev');
       };
     }else if ($(this).text() == 'Prev') {
-      var show_id = parseInt($("ul#post-list > li:visible").attr("class")) - 1;
-      $("ul#post-list > li:visible:not(#next)").hide();
+      var show_id = parseInt($("ul.post-list > li:visible").attr("class")) - 1;
+      $("ul.post-list > li:visible:not(#next)").hide();
       $("li." + show_id).fadeIn('slow');
       if (show_id == 0) {
         $(this).text('Next');
