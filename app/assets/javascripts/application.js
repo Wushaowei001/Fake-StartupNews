@@ -1,15 +1,31 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
-//
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require spin.min
+$("a.post-title").click(function() {
+  $('.post-content *').remove();
+  var spinner = new Spinner({top: '50px'}).spin();
+  $('.post-content').append(spinner.el);
+  var post_id = $(this).attr("id");
+  $.get("/posts/" + post_id, function(result) {
+    $('.post-content').html(result);
+  });
+});
+$("ul.post-list > li:gt(4):not(#next)").css('display', 'none');
+$("a.next").click(function() {
+  var show_id = parseInt($("ul.post-list > li:visible").attr("class"), 0) ;
+  if ($(this).text() == 'Next') {
+    show_id += 1;
+    $("ul.post-list > li:visible:not(#next)").hide();
+    $("li." + show_id).fadeIn('slow');
+    if (show_id == 4) {
+      $(this).text('Prev');
+    }
+  }else if ($(this).text() == 'Prev') {
+    show_id -= 1;
+    $("ul.post-list > li:visible:not(#next)").hide();
+    $("li." + show_id).fadeIn('slow');
+    if (show_id === 0) {
+      $(this).text('Next');
+    }
+  }
+});
