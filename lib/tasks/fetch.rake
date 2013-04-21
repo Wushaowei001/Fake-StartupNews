@@ -23,7 +23,7 @@ namespace :fetch do
     end
 
     puts "Fetch articles' urls..."
-    response = Net::HTTP.get_response("7h2oappengine.sinaapp.com","/snapi/news.php")
+    response = Net::HTTP.get_response("govoagtz8z0u.sinaapp.com","/snapi/news.php")
     result = JSON.parse(response.body)
     Post.destroy_all
     puts "Fetch articles..."

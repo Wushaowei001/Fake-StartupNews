@@ -1,4 +1,3 @@
-//= require jquery
 //= require jquery_ujs
 //= require spin.min
 $("a.post-title").click(function() {
