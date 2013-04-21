@@ -83,6 +83,7 @@ body {
   width: 200px;
 }
 .nav-list li a.post-title,
+.nav-list li a.prev,
 .nav-list li a.next {
   margin-top: 10px;
   padding: 4px 15px;
@@ -104,19 +105,26 @@ body {
 .nav-list li a.post-title:hover {
   background: #20604F;
 }
+.nav-list li a.prev,
 .nav-list li a.next {
   width: 32px;
   background: #69B0AC;
   font-size: 16.5px;
-  top: 340px;
   position: absolute;
   right: 14px;
 }
+.nav-list li a.prev {
+  top: 340px;
+}
+.nav-list li a.next {
+  top: 380px;
+}
+.nav-list li a.prev:hover,
 .nav-list li a.next:hover {
   width: 42px;
   background: #3A8FB7;
 }
 .spinner {
-  margin:0 auto;
+  margin: 0 auto;
   top: 100px;
 }

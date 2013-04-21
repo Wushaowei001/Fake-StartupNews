@@ -4,7 +4,8 @@
     <% @posts.each_with_index do |post, index| %>
     <li class="<%= index/5 %>"><a href="" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
     <% end %>
-    <li id="next"><a href="" class="next" onClick="return false;">Next</a></li>
+    <li class="page-button"><a href="" class="prev" onClick="return false;">Prev</a></li>
+    <li class="page-button"><a href="" class="next" onClick="return false;">Next</a></li>
   </ul>
 </div>
 
@@ -16,7 +17,3 @@
     <%= @post.content.html_safe %>
   </div>
 </div>
-
-<script>
-// TODO js to hide post-list
-</script>
