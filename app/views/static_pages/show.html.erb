@@ -1,5 +1,7 @@
 <div class="page-header">
-  <a href="<%= @post.url %>" title="查看原文" target="_blank"><%= @post.title %><span><i class="icon-heart"></i><%= @post.points %></span></a>
+  <a href="<%= @post.url %>" title="查看原文" target="_blank"><%= @post.title %>
+    <span><i class="icon-heart"></i><%= @post.points %></span>
+  </a>
 </div>
 <div class="page-inner">
   <%= @post.content.html_safe %>

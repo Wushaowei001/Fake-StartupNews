@@ -44,7 +44,7 @@ body {
   position: relative;
 }
 .post-content .page-inner {
-  padding: 40px;
+  padding: 20px 30px 60px;
 }
 .post-content .about p {
   font-size: 16px;
@@ -59,14 +59,14 @@ body {
   padding: 0;
   margin: 0;
 }
-.page-header > a {
+.page-header a {
   display: block;
   padding: 15px 30px;
   font-size: 20px;
   line-height: 24px;
   background-color: #f7f8f6;
 }
-.page-header > a:hover {
+.page-header a:hover {
   text-decoration: none;
 }
 .page-header span {
