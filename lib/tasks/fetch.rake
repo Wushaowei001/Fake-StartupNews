@@ -22,24 +22,21 @@ namespace :fetch do
       JSON.parse(response.body)['content']
     end
 
-    puts "Fetch articles' urls..."
-    response = Net::HTTP.get_response("govoagtz8z0u.sinaapp.com","/api/news.php")
-    result = JSON.parse(response.body)
-    Post.destroy_all
+    begin
+      puts "\nFetch articles' urls..."
+      response = Net::HTTP.get_response("govoagtz8z0u.sinaapp.com","/api/news.php")
+      result = JSON.parse(response.body)
+    rescue Exception => e
+      puts "\nError when calling the StarupNew API."
+    end
+
     puts "Fetch articles..."
-    result[0..29].each do |post|
+    30.times { Post.create } unless Post.exists?
+    result[0..29].each_with_index do |post, index|
       content = fetch_content(post['link'])
-      Post.create(:title => post['title'] ,:url => post['link'], :content => content, :points => post['points'])
+      Post.update(index + 1, :title => post['title'] ,:url => post['link'], :content => content, :points => post['points'], :comments => post['comments'])
     end
     puts "Finsh."
   end
 
-  desc "This task is called by the Heroku cron add-on"
-  task :cron => :environment do
-    if Time.now.hour % 4 == 0 # run every four hours
-      puts "Cron..."
-      Rake::Task["fetch:posts"].invoke
-      puts "done."
-    end
-  end
 end

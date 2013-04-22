@@ -8,7 +8,6 @@ $("a.post-title").click(function() {
   $.get("/posts/" + $(this).attr("id"), function(result) {
     $('.post-content').html(result);
   });
-  spinner.stop();
 });
 
 $("li.page-button").click(function() {
