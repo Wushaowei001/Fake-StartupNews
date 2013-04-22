@@ -30,13 +30,18 @@ namespace :fetch do
       puts "\nError when calling the StarupNew API."
     end
 
-    puts "Fetch articles..."
+    puts "\nFetch articles..."
     30.times { Post.create } unless Post.exists?
     result[0..29].each_with_index do |post, index|
       content = fetch_content(post['link'])
+      # 处理 SN 上的讨论贴
+      if /^item/.match(post['link'])
+        post['link'] = "http://news.dbanotes.net/#{post['link']}"
+        content = "<p>本文为 Starup News 讨论贴，请访问<a href=\"#{post['link']}\">原网站</a>查看。</p>"
+      end
       Post.update(index + 1, :title => post['title'] ,:url => post['link'], :content => content, :points => post['points'], :comments => post['comments'])
     end
-    puts "Finsh."
+    puts "\nFinsh."
   end
 
 end
