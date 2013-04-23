@@ -35,6 +35,10 @@ namespace :fetch do
     30.times { Post.create } unless Post.exists?
     result[0..29].each_with_index do |post, index|
       content = fetch_content(post['link'])
+      # 临时处理 Fake StarupNews 的页面
+      if /news.kshift.me/.match(post['link'])
+        content = "<p>嗯，你现在访问的就是 Fake StarupNews. 想跳转回 <a href=\"#{post['link']}\">StarupNews</a> 吗？</p>"
+      end
       # 处理 SN 上的讨论贴
       if /^item/.match(post['link'])
         post['link'] = "http://news.dbanotes.net/#{post['link']}"
