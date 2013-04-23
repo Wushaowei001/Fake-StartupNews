@@ -3,6 +3,9 @@
     <span><i class="icon-heart"></i><%= @post.points %></span>
   </a>
 </div>
+<ul class="toolbar inline text-right">
+  <li class="evernote">收藏到 <a href="#" onClick="Evernote.doClip({contentId:'article-content',providerName:'Starup News',title:'<%= @post.title %>',url:'<%= @post.url %>'}); return false;">Evernote</a></li>
+</ul>
 <div class="page-inner">
   <%= @post.content.html_safe %>
 </div>
