@@ -18,7 +18,7 @@ $("li.page-button").click(function() {
     $("li." + show_id).fadeIn('slow');
     if (show_id === 1) {
       $(".page-button:first").fadeIn('slow');
-    }else if (show_id === 4) {
+    }else if (show_id === 5) {
       $(this).fadeOut('slow');
     }
   }else if ($(this).children().text() === 'Prev') {
