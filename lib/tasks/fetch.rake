@@ -19,7 +19,8 @@ namespace :fetch do
       request = Net::HTTP::Get.new(uri.request_uri)
 
       response = http.request(request)
-      JSON.parse(response.body)['content']
+      res = JSON.parse(response.body)
+      res['error'] ? res['messages'] : res['content']
     end
 
     begin
@@ -39,6 +40,7 @@ namespace :fetch do
         post['link'] = "http://news.dbanotes.net/#{post['link']}"
         content = "<p>本文为 Starup News 讨论贴，请访问<a href=\"#{post['link']}\">原网站</a>查看。</p>"
       end
+      puts index
       content.gsub!(/(?<=class=").*?container(?=.*?")/, '')
       Post.update(index + 1, :title => post['title'] ,:url => post['link'], :content => content, :points => post['points'], :comments => post['comments'])
     end
