@@ -14,6 +14,7 @@ $("li.page-button").click(function() {
   var show_id = parseInt($("ul.post-list > li:visible").attr("class"), 0) ;
   if ($(this).children().text() === 'Next') {
     show_id += 1;
+    if (show_id >= 5) { show_id = 5; }
     $("ul.post-list > li:visible:not(.page-button)").hide();
     $("li." + show_id).fadeIn('slow');
     if (show_id === 1) {
@@ -23,6 +24,7 @@ $("li.page-button").click(function() {
     }
   }else if ($(this).children().text() === 'Prev') {
     show_id -= 1;
+    if (show_id <= 0) { show_id = 0; }
     $("ul.post-list > li:visible:not(.page-button)").hide();
     $("li." + show_id).fadeIn('slow');
     if (show_id === 3) {
