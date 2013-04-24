@@ -9,13 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require twitter/bootstrap
+ *= require twitter/bootstrap-responsive
  *= require_self
  *= require_tree .
  */
 body, button, input, select, textarea {
   font-family:Verdana,Arial,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
 }
-
 body {
   background-color: #B5CAA0;
   overflow-y: scroll;
@@ -84,7 +84,7 @@ h1, h2, h3 {
 }
 .post-list {
   position: fixed;
-  width: 200px;
+  width: 180px;
 }
 .nav-list li a.post-title,
 .nav-list li a.prev,
@@ -141,4 +141,27 @@ h1, h2, h3 {
 }
 .toolbar a:hover {
   color: #5d6c79;
+}
+@media (min-width: 1200px) {
+  .post-list {
+    margin-left: 70px;
+  }
+}
+@media (min-width: 980px) and (max-width: 1199px) {
+  .post-list {
+    margin-left: 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+  }
+  .post-list {
+    margin-left: -35px;
+  }
+}
+@media (max-width: 767px) {
+  .nav-list li a.prev, .nav-list li a.next {
+    right: 65px;
+  }
 }

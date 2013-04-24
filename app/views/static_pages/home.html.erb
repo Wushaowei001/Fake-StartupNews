@@ -1,5 +1,5 @@
 <% provide(:title, 'Home') %>
-<div class="span3">
+<div class="span3 hidden-phone">
   <ul class="nav nav-list post-list">
     <% @posts.each_with_index do |post, index| %>
     <li class="<%= index/5 %>"><a href="javascript:void(0);" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a></li>
