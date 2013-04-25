@@ -34,3 +34,23 @@ $("li.page-button").click(function() {
     }
   }
 });
+post_id = 1;
+$(".phone-button>a").click(function() {
+  if ($(this).attr("class") === 'next-post') {
+    post_id += 1;
+    if (post_id === 2) { $(".prev-post").show(); }
+    else if (post_id === 30) { $(".next-post").hide(); }
+    else if (post_id > 30) { post_id = 30; }
+  } else{
+    post_id -= 1;
+    if (post_id === 29) { $(".next-post").show(); }
+    else if (post_id === 1) { $(".prev-post").hide(); }
+    else if (post_id < 1) { post_id = 1; }
+  };
+  $('.post-content *').remove();
+  var spinner = new Spinner({top: '50px'}).spin();
+  $('.post-content').append(spinner.el);
+  $.get("/posts/" + post_id, function(result) {
+    $('.post-content').html(result);
+  });
+});

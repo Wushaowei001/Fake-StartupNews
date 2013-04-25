@@ -46,6 +46,8 @@ namespace :fetch do
       end
       puts index
       content.gsub!(/(?<=class=").*?container|post-list|post-content|page-header|page-inner|toolbar|span\d+(?=.*?)/, '')
+      # 处理表格宽度
+      content.gsub!(/(?!<table.*?)width="\d+"(?=.*?>)/, '')
       Post.update(index + 1, :title => post['title'] ,:url => post['link'], :content => content, :points => post['points'], :comments => post['comments'])
     end
     puts "\nFinsh."

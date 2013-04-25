@@ -88,7 +88,8 @@ h1, h2, h3 {
 }
 .nav-list li a.post-title,
 .nav-list li a.prev,
-.nav-list li a.next {
+.nav-list li a.next,
+.phone-button a {
   margin-top: 10px;
   padding: 4px 15px;
   border: none;
@@ -124,7 +125,8 @@ h1, h2, h3 {
   top: 380px;
 }
 .nav-list li a.prev:hover,
-.nav-list li a.next:hover {
+.nav-list li a.next:hover,
+.phone-button a {
   width: 42px;
   background: #3A8FB7;
 }
@@ -163,5 +165,20 @@ h1, h2, h3 {
 @media (max-width: 767px) {
   .nav-list li a.prev, .nav-list li a.next {
     right: 65px;
+  }
+  .phone-button a {
+    position: fixed;
+    bottom: 50px;
+    opacity: 0.7;
+  }
+  .phone-button a:active {
+    opacity: 1;
+  }
+  .next-post {
+    right: -15px;
+  }
+  .prev-post {
+    left: -15px;
+    display: none;
   }
 }
