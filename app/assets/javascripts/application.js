@@ -1,6 +1,6 @@
 //= require jquery_ujs
 //= require spin.min
-$("ul.post-list > li:gt(4):not(.page-button:last)").css('display', 'none');
+$("ul.post-list > li:not(.0):not(.page-button:last)").css('display', 'none');
 $("a.post-title").click(function() {
   $('.post-content *').remove();
   var spinner = new Spinner({top: '50px'}).spin();
