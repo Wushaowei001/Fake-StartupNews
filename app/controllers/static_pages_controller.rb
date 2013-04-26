@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     @posts = Post.find(:all, :order => 'id')
-    @post = Post.first
+    @post = Post.find(1)
   end
 
   def about
