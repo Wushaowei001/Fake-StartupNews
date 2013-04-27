@@ -23,7 +23,7 @@ namespace :fetch do
         res = JSON.parse(response.body)
         res['error'] ? res['messages'] : res['content']
       else
-        puts content = /<h1>.+?<\/h1>/.match(response.body)
+        content = /<h1>.+?<\/h1>/.match(response.body).to_s
       end
     end
 
