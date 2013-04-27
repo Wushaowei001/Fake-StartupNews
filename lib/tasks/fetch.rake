@@ -19,8 +19,21 @@ namespace :fetch do
       request = Net::HTTP::Get.new(uri.request_uri)
 
       response = http.request(request)
-      res = JSON.parse(response.body)
-      res['error'] ? res['messages'] : res['content']
+
+      case response.code
+      when 400
+        puts "400 Bad Request"
+      when 401
+        puts "401 Authorization Required"
+      when 500
+        puts "500 Internal Server Error"
+      when 404
+        puts "404 Not Found"
+      else
+        res = JSON.parse(response.body)
+        res['error'] ? res['messages'] : res['content']
+      end
+
     end
 
     begin
