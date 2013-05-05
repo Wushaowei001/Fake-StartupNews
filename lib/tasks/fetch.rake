@@ -1,6 +1,11 @@
 # encoding: utf-8
 namespace :fetch do
 
+  desc "Test Multi-threaded"
+  task :posts => :environment do
+    # TODO
+  end
+
   desc "Fetch articles"
   task :posts => :environment do
     require 'rubygems'

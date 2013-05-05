@@ -1,36 +1,15 @@
 <% provide(:title, 'Home') %>
-<div class="span3 hidden-phone">
-  <ul class="nav nav-list post-list">
-    <% @posts.each do |post| %>
-    <li class="<%= (post.id-1)/5 %>">
-      <a href="javascript:void(0);" class="post-title" id="<%= post.id %>" onClick="return false;"><%= post.title %></a>
-    </li>
-    <% end %>
-    <li class="page-button"><a href="javascript:void(0);" class="prev" onClick="return false;">Prev</a></li>
-    <li class="page-button"><a href="javascript:void(0);" class="next" onClick="return false;">Next</a></li>
-  </ul>
-</div>
 
-<div class="span9 post-content">
-  <div class="page-header">
-    <a href="<%= @post.url %>" title="查看原文" target="_blank"><%= @post.title %>
-      <span><i class="icon-heart"></i><%= @post.points %></span>
-    </a>
-  </div>
-  <ul class="toolbar inline text-right">
-    <li class="evernote"><a href="<%= @post.comments %>" title="查看原文" target="_blank">评论</a></li>
-    <li class="muted">·</li>
-    <li class="evernote">收藏到 <a href="javascript:void(0);" onClick="Evernote.doClip({contentId:'article-content',providerName:'Starup News',title:'<%= @post.title %>',url:'<%= @post.url %>'}); return false;">Evernote</a></li>
-  </ul>
-  <div class="page-inner" id="article-content">
-    <%= @post.content.html_safe %>
-  </div>
+<div class="page-header">
+  <a href="<%= @post.url %>" title="查看原文" target="_blank"><%= @post.title %>
+    <span><i class="icon-heart"></i><%= @post.points %></span>
+  </a>
 </div>
-<div class="visible-phone">
-  <span class="phone-button text-right">
-    <a href="javascript:void(0);" onClick="return false;" class="prev-post">Prev</a>
-  </span>
-  <span class="phone-button text-left">
-    <a href="javascript:void(0);" onClick="return false;" class="next-post">Next</a>
-  </span>
+<ul class="toolbar inline text-right">
+  <li class="evernote"><a href="<%= @post.comments %>" title="查看原文" target="_blank">评论</a></li>
+  <li class="muted">·</li>
+  <li class="evernote">收藏到 <a href="javascript:void(0);" onClick="Evernote.doClip({contentId:'article-content',providerName:'Starup News',title:'<%= @post.title %>',url:'<%= @post.url %>'}); return false;">Evernote</a></li>
+</ul>
+<div class="page-inner" id="article-content">
+  <%= @post.content.html_safe %>
 </div>
