@@ -1,11 +1,15 @@
 //=require jquery.pjax
-//= require spin.min
 (function( window, undefined ) {
-  var spinner = new Spinner().spin();
-  $('.page-inner').append(spinner.el);
   $(".page-button:first").css('display', 'none');
 
   $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]", {timeout: 3000});
+  $(document).on('pjax:send', function() {
+    $(".page-inner *").remove();
+    $('#spinningSquaresG').show();
+  });
+  $(document).on('pjax:complete', function() {
+    $('#spinningSquaresG').hide();
+  });
 
   $("li.page-button").click(function() {
     var show_id = parseInt($("ul.post-list > li:visible").attr("class"), 0);
