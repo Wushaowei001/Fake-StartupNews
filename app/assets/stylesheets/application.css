@@ -159,7 +159,8 @@ h1, h2, h3 {
 }
 /* loading */
 #facebookG {
-  width: 128px
+  width: 128px;
+  margin: 150px auto;
 }
 
 .facebook_blockG {

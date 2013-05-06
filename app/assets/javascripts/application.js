@@ -5,10 +5,10 @@
   $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]", {timeout: 5000});
   $(document).on('pjax:send', function() {
     $(".page-inner *").remove();
-    $('#spinningSquaresG').fadeIn();
+    $('#facebookG').fadeIn();
   });
   $(document).on('pjax:complete', function() {
-    $('#spinningSquaresG').hide();
+    $('#facebookG').hide();
   });
 
   $("li.page-button").click(function() {
