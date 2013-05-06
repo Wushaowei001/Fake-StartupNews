@@ -5,7 +5,7 @@
   $('.page-inner').append(spinner.el);
   $(".page-button:first").css('display', 'none');
 
-  $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]");
+  $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]", {timeout: 3000});
 
   $("li.page-button").click(function() {
     var show_id = parseInt($("ul.post-list > li:visible").attr("class"), 0);
