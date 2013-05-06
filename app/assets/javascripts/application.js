@@ -4,7 +4,7 @@
 
   $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]", {timeout: 5000});
   $(document).on('pjax:send', function() {
-    $(".page-inner *").remove();
+    $("[data=data-pjax-container] *").remove();
     $('#facebookG').fadeIn();
   });
   $(document).on('pjax:complete', function() {
