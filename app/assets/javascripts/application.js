@@ -5,7 +5,7 @@
   $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]", {timeout: 3000});
   $(document).on('pjax:send', function() {
     $(".page-inner *").remove();
-    $('#spinningSquaresG').show();
+    $('#spinningSquaresG').fadeIn();
   });
   $(document).on('pjax:complete', function() {
     $('#spinningSquaresG').hide();
