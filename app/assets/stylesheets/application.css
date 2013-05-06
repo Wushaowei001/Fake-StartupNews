@@ -161,6 +161,7 @@ h1, h2, h3 {
 #facebookG {
   width: 128px;
   margin: 150px auto;
+  display: none;
 }
 
 .facebook_blockG {
