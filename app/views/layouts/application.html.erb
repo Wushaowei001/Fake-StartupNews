@@ -19,20 +19,23 @@
 
       <div class="container">
         <div class="row">
+
           <div class="span3 hidden-phone">
             <ul class="nav nav-list post-list">
               <% @posts.each do |post| %>
               <li class="<%= (post.id-1)/5 %>">
-                <a href="/posts/<%= post.id %>" class="post-title"><%= post.title %></a>
+                <a href="/posts/<%= post.id %>" class="post-title" onClick="return false;" data="data-pjax"><%= post.title %></a>
               </li>
               <% end %>
-              <li class="page-button"><a href="javascript:void(0);" class="prev" onClick="return false;">Prev</a></li>
-              <li class="page-button"><a href="javascript:void(0);" class="next" onClick="return false;">Next</a></li>
+              <li class="page-button"><a href="javascript:;;" class="prev" onClick="return false;">Prev</a></li>
+              <li class="page-button"><a href="javascript:;;" class="next" onClick="return false;">Next</a></li>
             </ul>
           </div>
-          <div class="span9 post-content">
+
+          <div class="span9 post-content" data="data-pjax-container">
             <%= yield %>
           </div>
+
         </div>
       </div>
 

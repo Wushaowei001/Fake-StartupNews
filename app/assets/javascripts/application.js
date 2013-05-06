@@ -1,23 +1,11 @@
-//= require jquery.pjax
+//=require jquery.pjax
 //= require spin.min
 (function( window, undefined ) {
-  var spinner = new Spinner({top: '50px'}).spin();
+  var spinner = new Spinner().spin();
+  $('.page-inner').append(spinner.el);
   $("ul.post-list > li:not(.0):not(.page-button:last)").css('display', 'none');
-  $.pjax({
-    selector: 'a.post-title, a#home, a#about',
-    container: '.post-content',
-    cache: true,
-    storage: true,
-    titleSuffix: '',
-    filter: function(){},
-    callback: function(){}
-  });
-  $('.post-content').bind('pjax.start', function(){
-    $(this).append(spinner.el);
-  });
-  $('.post-content').bind('pjax.end', function(){
-    $("div.spinner").remove();
-  });
+
+  $(document).pjax("a[data=data-pjax]", "[data=data-pjax-container]");
 
   $("li.page-button").click(function() {
     var show_id = parseInt($("ul.post-list > li:visible").attr("class"), 0) ;

@@ -3,25 +3,24 @@ class StaticPagesController < ApplicationController
   def home
     @posts = Post.find(:all, :order => 'id')
     @post = Post.find(1)
-    if request.headers['X-PJAX']
-      render :layout => false
-    end
   end
 
   def about
-    @posts = Post.find(:all, :order => 'id')
-
     if request.headers['X-PJAX']
       render :layout => false
+    else
+      @posts = Post.find(:all, :order => 'id')
     end
   end
 
   def show
-    @posts = Post.find(:all, :order => 'id')
     @post = Post.find(params[:id])
 
     if request.headers['X-PJAX']
       render :layout => false
+    else
+      @posts = Post.find(:all, :order => 'id')
     end
+
   end
 end
