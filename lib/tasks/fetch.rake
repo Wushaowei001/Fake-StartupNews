@@ -38,6 +38,7 @@ namespace :fetch do
       result = JSON.parse(response.body)
     rescue Exception => e
       puts "\nError when calling the StarupNew API."
+      abort e.message
     end
 
     puts "\nFetch articles..."
